@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <title>Student form</title>
+
+  <link rel="stylesheet" th:href="@{/css/demo.css}" />
+</head>
+
+<!-- thymeleaf will be able to access "theDate" variable from Spring MVC Model -->
+<body>
+<form th:action="@{/processStudentForm}" th:object="${student}" method="POST">
+
+  First Name: <input type="text" th:field="*{firstName}" placeholder="Type your first name" />
+  <br><br>
+  Last Name: <input type="text" th:field="*{lastName}" placeholder="Type your last name" />
+  <br><br>
+<!--  <select th:field="*{country}">-->
+<!--    <option th:value="Brazil">Brazil</option>-->
+<!--    <option th:value="France">France</option>-->
+<!--    <option th:value="India">India</option>-->
+<!--    <option th:value="Argentina">Argentina</option>-->
+<!--  </select>-->
+
+  <select th:field="*{country}">
+
+      <option th:each="tempCountry: ${countries}"
+              th:value="${tempCountry}"
+              th:text="${tempCountry}" >
+      </option>
+  </select>
+  <br><br>
+  Favourite Programming Language:
+<!--  <input type="radio" th:field="*{favouriteLanguage}" th:value="GO"> GO </input>-->
+<!--  <input type="radio" th:field="*{favouriteLanguage}" th:value="Java"> Java </input>-->
+<!--  <input type="radio" th:field="*{favouriteLanguage}" th:value="Python"> Python </input>-->
+
+  <input type="radio" th:field="*{favouriteLanguage}"
+                      th:each="tempLang : ${languages}"
+                      th:value="${tempLang}"
+                      th:text="${tempLang}"
+  />
+  <br><br>
+  Favourite Operating Systems:
+<!--  <input type="checkbox" th:field="*{favouriteOS}" th:value="Linux"> Linux </input>-->
+<!--  <input type="checkbox" th:field="*{favouriteOS}" th:value="MacOS"> MacOS </input>-->
+<!--  <input type="checkbox" th:field="*{favouriteOS}" th:value="'Microsoft Windows'"> Microsoft Windows </input>-->
+<!--  <input type="checkbox" th:field="*{favouriteOS}" th:value="Ubuntu"> Ubuntu </input>-->
+
+  <input type="checkbox" th:field="*{favouriteOS}"
+                          th:each="tempOS : ${systems}"
+                          th:value="${tempOS}"
+                          th:text="${tempOS}"
+  />
+  <br><br>
+  <input type="submit" value="Submit"/>
+
+</form>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Thakur & Thakur company</title>
+</head>
+<body>
+    <h2> Thakur & Thakur company Home Page </h2>
+    <hr>
+    <p>
+        Welcome to the Thakur & Thakur Company home page !!!
+    </p>
+
+    <hr>
+    <!-- Display user & roles -->
+    <p>
+        User: <span sec:authentication="principal.username"></span>
+        <br><br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+    </p>
+
+    <hr>
+
+    <!-- display this section only to users with Manager role -->
+    <div sec:authorize="hasRole('MANAGER')">
+        <!-- Add a link to point to /leaders -->
+        <p>
+            <a th:href="@{/leaders}">Leadership Meeting</a>
+            (Only for Manager peeps)
+        </p>
+    </div>
+    <hr>
+
+    <!-- display this section only to users with Admin role -->
+    <div sec:authorize="hasRole('ADMIN')">
+        <!-- Add a link to point to /systems -->
+        <p>
+            <a th:href="@{/systems}">IT systems Meeting</a>
+            (Only for Admin peeps)
+        </p>
+    </div>
+    <hr>
+
+    <!-- Add a logout button -->
+    <form action="#" th:action="@{/logout}" method="POST">
+
+        <input type="submit" value="Logout" />
+
+    </form>
+
+</body>
+</html>

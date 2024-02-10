@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Confirmation</title>
+    <style>
+        .enhance {
+            font-style: italic;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    The customer is confirmed:
+    <span th:text="${customer.firstName + ' ' + customer.lastName}"
+    class="enhance">
+    </span>
+
+    <br><br>
+
+    Course Code:
+    <span th:text="${customer.courseCode}"
+          class="enhance">
+    </span>
+
+</body>
+</html>

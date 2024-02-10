@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title></title>
+
+  <link rel="stylesheet" th:href="@{/css/demo.css}" />
+</head>
+
+<!-- thymeleaf will be able to access "theDate" variable from Spring MVC Model -->
+<body>
+
+    Hello World of Spring :)
+    <br><br>
+    Student Name: <span th:text="${param.studentName}" class = "funny"/>
+    <br><br>
+    The message: <span th:text="${message}" class = "funny"/>
+
+</body>
+
+</html>
